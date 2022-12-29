@@ -1,4 +1,4 @@
-import { getOptimalPath, getOptimalPathRecursive, getOptimalPathAlt } from './solution';
+import { getOptimalPath } from './solution';
 
 describe('Challenge 14: The best path', () => {
   describe('getOptimalPath(...)', () => {
@@ -17,14 +17,10 @@ describe('Challenge 14: The best path', () => {
     it('#T should return a number', () => {
       const path = [[0], [2, 3]];
       expect(typeof getOptimalPath(path)).toBe('number');
-      expect(typeof getOptimalPathRecursive(path)).toBe('number');
-      expect(typeof getOptimalPathAlt(path)).toBe('number');
     });
 
     it.each(testCases)('#$# $description', ({ args, expected }) => {
       expect(getOptimalPath(...args)).toEqual(expected);
-      expect(getOptimalPathRecursive(...args)).toEqual(expected);
-      expect(getOptimalPathAlt(...args)).toEqual(expected);
     });
   });
 });

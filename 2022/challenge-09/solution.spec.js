@@ -1,4 +1,4 @@
-import { countTime, countTimeSort, countTimeMap } from './solution';
+import { countTime } from './solution';
 
 describe('Challenge 09: Crazy Xmas lights', () => {
   describe('countTime(...)', () => {
@@ -13,14 +13,10 @@ describe('Challenge 09: Crazy Xmas lights', () => {
 
     it('#T should return a number', () => {
       expect(typeof countTime([0, 0, 1, 0, 0])).toBe('number');
-      expect(typeof countTimeMap([0, 0, 1, 0, 0])).toBe('number');
-      expect(typeof countTimeSort([0, 0, 1, 0, 0])).toBe('number');
     });
 
     it.each(testCases)('#$# $description', ({ args, expected }) => {
       expect(countTime(...args)).toEqual(expected);
-      expect(countTimeMap(...args)).toEqual(expected);
-      expect(countTimeSort(...args)).toEqual(expected);
     });
   });
 });
