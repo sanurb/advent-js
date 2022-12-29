@@ -5,4 +5,15 @@ const countHours = (year, holidays) => {
   }, 0);
 };
 
-export { countHours };
+const countHoursAlt = (year, holidays) => {
+  const weekdays = [1, 2, 3, 4, 5];
+
+  const weekdaysHolidays = holidays.filter(holiday => {
+    const dayOfWeek = new Date(`${holiday}/${year}`).getDay();
+    return weekdays.includes(dayOfWeek);
+  });
+
+  return weekdaysHolidays.length * 2;
+};
+
+export { countHours, countHoursAlt };
