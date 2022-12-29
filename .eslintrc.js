@@ -21,6 +21,7 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'object-shorthand': 'off',
     'class-methods-use-this': 'off',
+    'no-return-assign': 'off',
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'import/prefer-default-export': 'off',
     'node/no-unsupported-features/es-syntax': ['error', { ignores: ['modules'] }],
