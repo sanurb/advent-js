@@ -1,4 +1,4 @@
-import { selectSleigh, selectSleighAlt } from './solution';
+import { selectSleigh } from './solution';
 
 describe('Challenge 12: Electric sleighs, wow!', () => {
   describe('selectSleigh(...)', () => {
@@ -59,12 +59,10 @@ describe('Challenge 12: Electric sleighs, wow!', () => {
         { name: 'marcospage', consumption: 3 }
       ];
       expect(typeof selectSleigh(distance, sleighs)).toBe('string');
-      expect(typeof selectSleighAlt(distance, sleighs)).toBe('string');
     });
 
     it.each(testCases)('#$# $description', ({ args, expected }) => {
       expect(selectSleigh(...args)).toEqual(expected);
-      expect(selectSleighAlt(...args)).toEqual(expected);
     });
   });
 });
