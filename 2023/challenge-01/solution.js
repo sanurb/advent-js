@@ -7,4 +7,18 @@ function findFirstRepeated(gifts) {
   return -1;
 }
 
-export { findFirstRepeated };
+function findFirstRepeatedAlt(gifts) {
+  let repeatedId = -1;
+
+  gifts.some((gift, i, arr) => {
+    if (arr.indexOf(gift) < i) {
+      repeatedId = gift;
+      return true;
+    }
+    return false;
+  });
+
+  return repeatedId;
+}
+
+export { findFirstRepeated, findFirstRepeatedAlt };

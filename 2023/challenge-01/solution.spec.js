@@ -1,4 +1,4 @@
-import { findFirstRepeated } from './solution';
+import { findFirstRepeated, findFirstRepeatedAlt } from './solution';
 
 describe('Challenge: Find First Repeated ID in Gifts', () => {
   describe('findFirstRepeated(...)', () => {
@@ -11,6 +11,7 @@ describe('Challenge: Find First Repeated ID in Gifts', () => {
 
     it.each(testCases)('#$# $description', ({ args, expected }) => {
       expect(findFirstRepeated(...args)).toEqual(expected);
+      expect(findFirstRepeatedAlt(...args)).toEqual(expected);
     });
   });
 });
