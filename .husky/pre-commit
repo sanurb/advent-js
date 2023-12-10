@@ -7,7 +7,7 @@ export FORCE_COLOR=1
 
 echo '🔍🎨 Formating and checking staged files before committing!'
 
-npx lint-staged ||
+npx.cmd lint-staged ||
 (
   echo '💀❌ Ooops! Formating and checking process has failed!';
   false;
