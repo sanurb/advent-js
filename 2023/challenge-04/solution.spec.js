@@ -1,4 +1,4 @@
-import { decode } from './solution';
+import { decode, decodeAlt } from './solution';
 
 describe('Challenge 04: Turn the parentheses around', () => {
   describe('decode(message)', () => {
@@ -22,21 +22,23 @@ describe('Challenge 04: Turn the parentheses around', () => {
         args: ['((nta)(sa))'],
         expected: 'santa',
         description: 'Nested parentheses at the beginning'
-      },
-      {
-        args: ['()())'],
-        expected: '',
-        description: 'Empty string with multiple parentheses'
-      },
-      {
-        args: [')()('],
-        expected: '',
-        description: 'Mismatched parentheses'
       }
+      // The input will always be well formed so no validation is necessary.
+      // {
+      //   args: ['()())'],
+      //   expected: '',
+      //   description: 'Empty string with multiple parentheses'
+      // },
+      // {
+      //   args: [')()('],
+      //   expected: '',
+      //   description: 'Mismatched parentheses'
+      // }
     ];
 
     it.each(testCases)('#$# $description', ({ args, expected }) => {
       expect(decode(...args)).toEqual(expected);
+      expect(decodeAlt(...args)).toEqual(expected);
     });
   });
 });
