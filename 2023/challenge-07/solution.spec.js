@@ -1,4 +1,4 @@
-import { drawGift } from './solution';
+import { drawGift, drawGiftAlt } from './solution';
 
 describe('Challenge #7: The 3D boxes', () => {
   describe('drawGift', () => {
@@ -22,6 +22,7 @@ describe('Challenge #7: The 3D boxes', () => {
 
     it.each(testCases)('#$# $description', ({ args, expected }) => {
       expect(drawGift(...args)).toEqual(expected);
+      expect(drawGiftAlt(...args)).toEqual(expected);
     });
   });
 });
