@@ -1,7 +1,7 @@
 import { drawGift, drawGiftAlt } from './solution';
 
 describe('Challenge #7: The 3D boxes', () => {
-  describe('drawGift', () => {
+  describe('drawGift(size, symbol)', () => {
     const testCases = [
       {
         args: [4, '+'],
