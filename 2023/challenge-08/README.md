@@ -28,3 +28,37 @@ console.log(result1)
   11b: 11 gifts type 'b' would be packed in 1 box and 1 gift would be left, resulting in 1 loose box {b} and a bag with 1 gift (b)
 
 ```
+
+## 💡 Solution
+
+### 🧮 Mathematical Formulation
+
+We can define the problem as a sequence of operations on a set of elements (gifts). Let `G` be a set of gifts where each element `g` in `G` has a type `t` and a quantity `q`. The goal is to transform this set into an ordered sequence of packed gifts using the least amount of space while adhering to the given packing rules.
+
+1. **Gift Packing:** For a given type `t` with quantity `q`, the number of boxes `B` and pallets `P` can be defined as:
+
+   - Boxes: `B = ⌊q / 10⌋`
+   - Pallets: `P = ⌊B / 5⌋`
+   - Remaining Gifts: `R = q % 10`
+   - Remaining Boxes (after pallets): `B' = B % 5`
+
+   Where `⌊x⌋` is the floor function representing the greatest integer less than or equal to `x`.
+
+2. **Warehouse Representation:** The final warehouse representation is a concatenation of pallets, boxes, and bags in the order they appear in the input string. It can be represented as:
+   - `Warehouse(t) = "[" × P + "{" × B' + "(" + R × t + ")" for each type t in G`
+
+### Example Calculation
+
+For `76a11b`:
+
+- For `76a`:
+  - `B = ⌊76 / 10⌋ = 7` boxes
+  - `P = ⌊7 / 5⌋ = 1` pallet
+  - `R = 76 % 10 = 6` remaining gifts
+  - `B' = 7 % 5 = 2` remaining boxes
+  - Warehouse representation for `a`: `[a]{a}{a}(aaaaaa)`
+- For `11b`:
+  - Apply the same formula as above for `b`.
+  - Warehouse representation for `b`: `{b}(b)`
+
+Combining both, we get: `[a]{a}{a}(aaaaaa){b}(b)`
