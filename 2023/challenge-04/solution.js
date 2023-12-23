@@ -28,4 +28,10 @@ function decodeAlt(message) {
   return message;
 }
 
-export { decode, decodeAlt };
+function decodeWithRecursion(message) {
+  const msg = message.replace(/\(([^()]*)\)/g, (_, match) => match.split('').reverse().join(''));
+
+  return msg.includes('(') ? decode(msg) : msg;
+}
+
+export { decode, decodeAlt, decodeWithRecursion };
