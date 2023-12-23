@@ -21,3 +21,19 @@ const original = 'abcde';
 const modified = 'abcde';
 findNaughtyStep(original, modified); // ''
 ```
+
+**To keep in mind**:
+
+- There will always be one step difference or none.
+- The modification can occur anywhere in the chain.
+- The original sequence may be empty
+
+## 💡 Solution
+
+### 🧮 Mathematical Formulation
+
+**Objective** : Identify the first discrepancy between two sequences of manufacturing steps - an extra or missing step - caused by a mischievous elf.
+
+- Let's denote the original sequence as O and the modified sequence as M.
+- We compare O[i] with M[i] for each position i until we find a discrepancy.
+- The first character where O[i] differs from M[i] (or if M has an extra character at the end) is the naughty step.

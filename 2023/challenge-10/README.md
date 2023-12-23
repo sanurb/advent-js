@@ -37,6 +37,8 @@ Note:
 
 ### 🧮 Mathematical Formulation
 
+**Objective**: Create a Christmas Tree using symbols and spaces.
+
 1. **Understanding the Tree Structure:**
 
    - Imagine stacking ice cream scoops (representing ornaments) on top of each other to make a tall ice cream cone (our Christmas tree).

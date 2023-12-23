@@ -24,3 +24,33 @@ const materials = 'psli';
 
 manufacture(gifts, materials); // []
 ```
+
+## 💡 Solution
+
+### 🧮 Mathematical Formulation
+
+Given a list of desired gifts (G) and available materials (M), determine which gifts can be produced. Each gift is represented as a string, and its construction requires a specific subset of characters from the materials.
+
+#### Gifts
+
+Denote the set of n gifts as G = {g₁, g₂, ..., gₙ}, where each gift gᵢ is a string representing its material requirements.
+
+#### Materials
+
+Define the available materials as a string M.
+
+#### Gift Manufacturing Function
+
+Introduce a function f(gᵢ) that maps each gift gᵢ to the set of characters (f(gᵢ) ⊆ Σ) required for its construction, where Σ is the alphabet of available materials.
+
+#### Feasibility Constraint
+
+Define a binary feasibility indicator can_make(gᵢ), where can_make(gᵢ) = 1 if and only if f(gᵢ) ⊆ M.
+
+#### Objective Function:
+
+Our objective is to maximize the number of gifts that can be produced from the available materials. This can be formulated as a set packing problem with the following objective function:
+
+```
+Maximize ∑(gᵢ in G) can_make(gᵢ)
+```
