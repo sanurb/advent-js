@@ -67,17 +67,13 @@ function getIndexsForPalindromeAlt(word) {
   return [];
 }
 
-// Best readability and performant solution.
-const getIndexsForPalindromeReadable = word => {
-  const splitChars = [...word];
-  const isPalindrome = (str, start = 0, end = str.length - 1) => {
-    while (start < end) {
-      if (str[start] !== str[end]) return false;
-      start += 1;
-      end -= 1;
-    }
-    return true;
+// Best readability
+function getIndexsForPalindromeReadable(word) {
+  const isPalindrome = arr => {
+    return [...arr].reverse().every((char, index) => char === arr[index]);
   };
+
+  const splitChars = [...word];
 
   if (isPalindrome(word)) return [];
 
@@ -90,6 +86,38 @@ const getIndexsForPalindromeReadable = word => {
   }
 
   return null;
-};
+}
 
-export { getIndexsForPalindrome, getIndexsForPalindromeAlt, getIndexsForPalindromeReadable };
+function getIndexsForPalindromeWithSlice(word) {
+  const isPalindrome = arr => [...arr].reverse().every((char, index) => char === arr[index]);
+
+  if (isPalindrome(word)) {
+    return [];
+  }
+
+  const characters = [...word];
+  let result = null;
+
+  characters.some((_, i) => {
+    // eslint-disable-next-line no-shadow
+    return characters.slice(i + 1).some((_, j) => {
+      const actualJ = j + i + 1;
+      const swapped = [...characters];
+      [swapped[i], swapped[actualJ]] = [swapped[actualJ], swapped[i]];
+
+      if (isPalindrome(swapped)) {
+        result = [i, actualJ];
+      }
+      return result;
+    });
+  });
+
+  return result;
+}
+
+export {
+  getIndexsForPalindrome,
+  getIndexsForPalindromeAlt,
+  getIndexsForPalindromeReadable,
+  getIndexsForPalindromeWithSlice
+};
