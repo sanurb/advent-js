@@ -37,50 +37,49 @@ Note:
 
 ### 🧮 Mathematical Formulation
 
-**Objective**: Create a Christmas Tree using symbols and spaces.
+This problem involves constructing a visual representation of a Christmas tree using a string of ornaments and a specified height. The tree is to be displayed as a multiline string, with ornaments arranged in a specific pattern and the tree centered on each line. Let's formulate this problem mathematically:
 
-1. **Understanding the Tree Structure:**
+1. **Tree Structure:**
 
-   - Imagine stacking ice cream scoops (representing ornaments) on top of each other to make a tall ice cream cone (our Christmas tree).
-   - Each scoop is a bit bigger than the one above it.
-   - Finally, put a stick (the trunk) at the bottom.
+   - Define the tree height `H` as an integer representing the number of levels (excluding the trunk).
+   - Let `ornaments` be a string where each character represents a unique ornament.
 
-2. **Building the Tree, Step-by-Step:**
+2. **Ornament Distribution:**
 
-   - **Top of the Tree (Smallest Scoop):**
+   - On each level `i` (ranging from 1 to `H`), the tree will have `i` ornaments.
+   - Ornaments are selected cyclically from `ornaments`. For a given level `i`, the j-th ornament is `ornaments[(j - 1) % length(ornaments)]`, where `j` ranges from 1 to `i`.
 
-     - Start with one ornament at the top.
-     - This is like placing a single scoop of ice cream on a cone.
+3. **Tree Centering:**
 
-   - **Adding More Scoops (Levels of Ornaments):**
+   - The total width of the tree's base (the widest part) is `2H - 1`.
+   - For each level `i`, the number of leading spaces is `(2H - 1 - 2i + 1) / 2` to center the ornaments.
 
-     - For each level down the tree, add one more ornament than the level above.
-     - This makes each new level of scoops slightly bigger.
+4. **Trunk Formation:**
 
-   - **Centering the Scoops:**
+   - The trunk is represented by the character `|` and is centered in line with the tree levels.
+   - It is positioned at level `H + 1`, with leading spaces calculated as `(2H - 1 - 1) / 2`.
 
-     - Each level of scoops (ornaments) is centered. This means putting the same number of empty spaces (air) on each side of the scoops.
-     - The number of air spaces decreases by one as we move down each level.
+5. **Multiline String Construction:**
 
-   - **The Trunk:**
-     - At the bottom, place the trunk (a single '|'), centered just like the scoops.
+   - Construct a multiline string, where each line corresponds to a level of the tree or the trunk.
+   - The tree is completed by concatenating these lines with newline characters (`\n`).
 
-3. **Mathematical Representation:**
+6. **Visualizing the Tree:**
 
-   - Let's call the height of the tree `H`.
-   - For each level `L` (starting from 1 at the top to `H` at the bottom), we have:
-     - `H - L` air spaces on each side.
-     - `L` ornaments (scoops) in the middle.
-   - The trunk is just one '|' centered at the bottom.
+For `H = 4` and `ornaments = "123"`:
 
-4. **Visualizing the Tree:**
+- Level 1: 3 spaces, `1`, 3 spaces.
+- Level 2: 2 spaces, `2 3`, 2 spaces.
+- Level 3: 1 space, `1 2 3`, 1 space.
+- Level 4: `1 2 3 1`.
+- Trunk: 3 spaces, `|`, 3 spaces.
 
-   - If `H` is 4 and ornaments are represented by `*`, the tree looks like this:
+- If `H` is 4 and ornaments are represented by `*`, the tree looks like this:
 
-     ```
-        *      <- Level 1 (1 ornament, 3 air spaces each side)
-       * *     <- Level 2 (2 ornaments, 2 air spaces each side)
-      * * *    <- Level 3 (3 ornaments, 1 air space each side)
-     * * * *   <- Level 4 (4 ornaments, no air space)
-        |      <- Trunk (centered)
-     ```
+  ```
+     *      <- Level 1 (1 ornament, 3 air spaces each side)
+    * *     <- Level 2 (2 ornaments, 2 air spaces each side)
+   * * *    <- Level 3 (3 ornaments, 1 air space each side)
+  * * * *   <- Level 4 (4 ornaments, no air space)
+     |      <- Trunk (centered)
+  ```
