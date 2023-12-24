@@ -1,3 +1,4 @@
+/* eslint-disable no-cond-assign */
 // Brute force solution
 function getIndexsForPalindrome(word) {
   const isPalindrome = wordToCheck => wordToCheck === wordToCheck.split('').reverse().join('');
@@ -29,30 +30,41 @@ function getIndexsForPalindromeAlt(word) {
     return true;
   };
 
-  if (isPalindrome(word)) return [];
-
-  const swapChars = (str, i, j) => {
-    const strArr = str.split('');
-    [strArr[i], strArr[j]] = [strArr[j], strArr[i]];
-    return strArr.join('');
-  };
+  let result = null;
 
   for (let i = 0, j = word.length - 1; i < j; i++, j--) {
     if (word[i] !== word[j]) {
+      result ||= isPalindrome(
+        word.substring(0, i) + word[j] + word.substring(i + 1, j) + word[i] + word.substring(j + 1)
+      );
+
       for (let k = i + 1; k < j; k++) {
-        if (word[k] === word[j] && isPalindrome(swapChars(word, i, k))) {
+        if (
+          word[k] === word[j] &&
+          (result ||= isPalindrome(
+            word.substring(0, i) + word[k] + word.substring(i + 1, k) + word[i] + word.substring(k + 1)
+          ))
+        ) {
           return [i, k];
         }
       }
+
       for (let k = j - 1; k > i; k--) {
-        if (word[k] === word[i] && isPalindrome(swapChars(word, k, j))) {
+        if (
+          word[k] === word[i] &&
+          (result ||= isPalindrome(
+            word.substring(0, k) + word[j] + word.substring(k + 1, j) + word[k] + word.substring(j + 1)
+          ))
+        ) {
           return [k, j];
         }
       }
-      return null;
+
+      return result || null;
     }
   }
-  return null;
+
+  return [];
 }
 
 // Best readability and performant solution.
