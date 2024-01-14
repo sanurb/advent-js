@@ -14,7 +14,7 @@ function maxGifts(houses) {
   return currentMax;
 }
 
-function maxGiftsAlt(houses) {
+function maxGiftsForOf(houses) {
   let giftsInPrevHouse = houses[0];
   let giftsInSecondPrevHouse = 0;
 
@@ -27,4 +27,19 @@ function maxGiftsAlt(houses) {
   return giftsInPrevHouse;
 }
 
-export { maxGifts, maxGiftsAlt };
+function maxGiftsAlt(houses) {
+  let includeCurrent = 0;
+  let excludeCurrent = 0;
+  let maxWithoutPrevious;
+
+  for (const giftsInHouse of houses) {
+    // maxWithoutPrevious = [excludeCurrent, includeCurrent][+(includeCurrent > excludeCurrent)];
+    maxWithoutPrevious = Math.max(excludeCurrent, includeCurrent);
+    includeCurrent = excludeCurrent + giftsInHouse;
+    excludeCurrent = maxWithoutPrevious;
+  }
+
+  return Math.max(excludeCurrent, includeCurrent);
+}
+
+export { maxGifts, maxGiftsForOf, maxGiftsAlt };
