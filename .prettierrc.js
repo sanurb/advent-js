@@ -11,5 +11,6 @@ module.exports = {
       files: '*.ts',
       options: { parser: 'typescript' }
     }
-  ]
+  ],
+  endOfLine: 'auto'
 };
