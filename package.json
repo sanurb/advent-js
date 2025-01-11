@@ -29,6 +29,8 @@
     "fix:lint": "npm run check:lint -- --fix",
     "challenge": "cross-env-shell 'runChallenge() { babel-node ./${1:-2022}/challenge-${2:-01}/solution.js; }; runChallenge'",
     "test": "jest",
+    "test:year": "node run-tests-for-year.js",
+    "test:watch:year": "node run-tests-for-year.js --watch",
     "test:watch": "npm run test -- --watch",
     "prepare": "husky install"
   },
